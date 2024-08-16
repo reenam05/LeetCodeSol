@@ -1,10 +1,12 @@
 class Solution(object):
     def twoSum(self, nums, target):
-        
-        my_dict = {}
+            numMap = {}
+            n = len(nums)
 
-        for index, value in enumerate(nums):
-            my_dict[index] = value
-            for i,x in enumerate(my_dict.values()):
-                if(x == target - my_dict[index] and i != index):
-                    return [i,index]
+            for i in range(n):
+                complement = target - nums[i]
+                if complement in numMap:
+                    return [numMap[complement], i]
+                numMap[nums[i]] = i
+
+            return []  # returns empty array
